@@ -1,0 +1,21 @@
+# Career adventure
+- [x] Point Explore Portfolio to the supplied official site and refresh the game welcome/menu presentation; navigation, Start Game and pause checked in-browser, 13 tests passed.
+- [x] Clean up crowded pixel graphics and verify the reported stuck/completion flow at the user's screen size. Completion closes, map clicks no longer reach buildings underneath, next-level movement works, and all seven routes pass.
+- [x] Recreate the screenshot as a playable 2D pixel-art adventure with seven career destinations and shared accurate content.
+- [x] Verify pixel-game movement, double jump, coins, bridge collision removal, checkpoints, restart, all seven panels, completion and touch controls; 19 tests passed.
+- [x] Add distinct career-area terrain, themed decorations, varied platforms and optional jumping routes without replacing the pixel game.
+- [x] Implement five original enemy types, stomping, three-heart damage, invulnerability, checkpoint respawn and restart.
+- [x] Add shield/speed rewards, particles, bridge shake and animated checkpoints; verify gameplay and portfolio access.
+- [x] Expand into seven separately loaded career levels with readable character scale, bounded follow camera, start/next-level screens, locked replay map and saved optional progression.
+- [x] Verify each full level route, destination panel, completion unlock, replay and restart; preserve unrestricted traditional portfolio access. Seven-level live playthrough and saved replay access passed; 32 regression tests passed.
+- [x] Phase 1: detailed voxel starting island, river/waterfall, masonry bridge, trees, architecture and warm sunset; existing character preserved, movement/landing and E-panel checked on desktop, smaller-screen scene checked, 14 regression tests passed.
+- [x] Verify official McServ capabilities; add a separate voxel discovery building and E-panel without unsupported live data.
+- [x] Build and verify first playable district: physics, movement, jump, camera, interaction.
+- [x] Extend connected world across seven accurate portfolio districts.
+- [x] Add HUD, collectible progress, checkpoints, touch controls, panels and traditional view.
+- [x] Verify traversal to the final island, double jump, mobile controls and tests; document local running and deployment.
+- [x] Upgrade movement with alternate jump keys, double jump, effects and sound.
+- [x] Add breakable bridges, collapsing/moving/timed platforms, spring pads, keys and safe checkpoints.
+- [x] Add opening menu, tutorial, mute/restart controls and completion feedback.
+- [x] Refine asset-backed scenery, cinematic lighting and requested palette using new references.
+- [x] Preserve and expand accurate project content; verify mobile interactions.

@@ -1,0 +1,12 @@
+import { describe,it,expect } from 'vitest';
+import { levels,canPlayLevel,completeLevel,readProgress } from '../pixel/levels';
+import { usePixel } from '../pixel/state';
+describe('seven separate career worlds',()=>{
+  it('closing completion resumes movement without losing the unlocked next level',()=>{usePixel.getState().set({started:true,level:0,completed:[0],levelDone:true,complete:false,paused:false,map:false});usePixel.getState().dismissMenu();expect(usePixel.getState().levelDone).toBe(false);expect(usePixel.getState().complete).toBe(false);expect(canPlayLevel(1,usePixel.getState().completed)).toBe(true);});
+  it('starts at level one and locks all future levels',()=>{expect(levels).toHaveLength(7);expect(canPlayLevel(0,[])).toBe(true);for(let id=1;id<7;id++)expect(canPlayLevel(id,[])).toBe(false);});
+  it('unlocks only the next level and permits completed-level replay',()=>{const completed=completeLevel(0,[]);expect(completed).toEqual([0]);expect(canPlayLevel(1,completed)).toBe(true);expect(canPlayLevel(2,completed)).toBe(false);expect(canPlayLevel(0,completed)).toBe(true);});
+  it('finishes through the destination panel without requiring optional coins',()=>{const s=usePixel.getState();s.set({level:0,completed:[],nearby:null,panel:null,levelDone:false,coins:[]});s.finish();expect(usePixel.getState().levelDone).toBe(false);s.set({nearby:0,panel:0});s.finish();expect(usePixel.getState().completed).toEqual([0]);expect(usePixel.getState().levelDone).toBe(true);expect(usePixel.getState().coins).toEqual([]);});
+  it('refuses to load locked levels',()=>{usePixel.getState().set({completed:[],level:0});usePixel.getState().loadLevel(6);expect(usePixel.getState().level).toBe(0);});
+  it('loads only valid contiguous saved progression',()=>{expect(readProgress('[0,1,6]')).toEqual([0,1]);expect(readProgress('invalid')).toEqual([]);expect(readProgress('[6]')).toEqual([]);});
+  it('every mandatory gap and rise is reachable without power-ups',()=>{for(const level of levels){expect(level.width).toBeGreaterThan(2200);for(let n=1;n<level.islands.length;n++){const p=level.islands[n-1];const q=level.islands[n];if(!p||!q)throw Error('Missing island');const gap=q.x-q.width/2-(p.x+p.width/2);expect(gap).toBeLessThan(90);expect(p.y-q.y).toBeLessThan(40);}}});
+});
